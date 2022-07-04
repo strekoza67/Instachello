@@ -1,0 +1,39 @@
+.sidebar {
+  grid-area: sidebar;
+  text-align: center;
+}
+
+.sidebar img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.menu {
+  text-align: left;
+  padding-left: 20px;
+
+}
+
+.menu__item {
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 500;
+  width: 100%;
+  height: 41px;
+}
+
+.menu__item a {
+  width: 100%;
+  height: 100%;
+  color: #707070;
+}
+
+.menu__item a:hover {
+  color: #e7307c;
+}
+
+.menu__item a.active {
+  color: #e7307c;
+}

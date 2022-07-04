@@ -1,0 +1,41 @@
+.user__inner {
+  grid-area: user;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.user img {
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user {
+  display: flex;
+  max-height: 100%;
+  align-items: center;
+}
+
+.user__descr {
+  margin-left: 10px;
+}
+
+.user__name {
+  color: #333;
+  margin: 0;
+}
+
+.user__status {
+  font-weight: 500;
+  color: rgb(53, 246, 65);
+}
+
+.deleting {
+  color: rgb(237, 33, 33);
+  font-weight: 500;
+  cursor: pointer;
+}
