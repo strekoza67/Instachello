@@ -1,46 +1,25 @@
+import { connect } from 'react-redux';
 import { sendMessageActionCreator, uppdateNewMessageTextActionCreator } from '../../../redux/messages-reducer';
-import StoreContext from '../../../store-context';
 import Chat from './Chat';
 
-const ChatContainer = (props) => {
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = props.store.getState();
-
-          let sendMessage = () => {
-            props.store.dispatch(sendMessageActionCreator());
-          };
-          let onMessageText = (text) => {
-            let action = uppdateNewMessageTextActionCreator(text);
-            props.store.dispatch(action);
-          }
-          return <Chat
-            uppdateNewMessageText={onMessageText}
-            sendMessage={sendMessage}
-            messagesPage={state.messagesPage}
-            newMessageText={state.messagesPage.newMessageText} />
-        }
-      }
-
-    </StoreContext.Consumer>
-  )
-}
 let mapStateToProps = (state) => {
   return {
     messages: state.messagesPage.messages,
-    newMessageText: state.messagesPage.uppdateNewMessageText,
+    newMessageText: state.messagesPage.newMessageText,
   }
 }
 
-let mapDispatchToProps = () => {
+let mapDispatchToProps = (dispatch) => {
   return {
-    newMessageText: () => { },
-    sendMessage: () => { },
+    uppdateNewMessageText: (text) => {
+      dispatch(uppdateNewMessageTextActionCreator(text))
+    },
+    sendMessage: () => {
+      dispatch(sendMessageActionCreator());
+    },
   }
 }
 
-const SuperMessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Chat);
+const ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat);
 
 export default ChatContainer;
