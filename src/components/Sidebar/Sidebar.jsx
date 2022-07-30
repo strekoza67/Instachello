@@ -10,6 +10,7 @@ const Sidebar = () => {
         <ul className={style.menu}>
           <li className={style.menu__item}><NavLink to='/profile' className={navData => navData.isActive ? style.active : style.menu__item}>My Profile</NavLink></li>
           <li className={style.menu__item}><NavLink to='/messages' className={navData => navData.isActive ? style.active : style.menu__item}>Messages</NavLink></li>
+          <li className={style.menu__item}><NavLink to='/friends' className={navData => navData.isActive ? style.active : style.menu__item}>Friends</NavLink></li>
           <li className={style.menu__item}><NavLink to='/feed' className={navData => navData.isActive ? style.active : style.menu__item}>Feed</NavLink></li>
           <li className={style.menu__item}><NavLink to='/explore' className={navData => navData.isActive ? style.active : style.menu__item}>Explore</NavLink></li>
           <li className={style.menu__item}><NavLink to='/tranding' className={navData => navData.isActive ? style.active : style.menu__item}>Tranding</NavLink></li>

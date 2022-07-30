@@ -4,6 +4,7 @@ import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
 import Messages from './components/Messages/Messages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import FriendsContainer from './components/Friends/FriendsContainer';
 
 
 const App = (props) => {
@@ -16,6 +17,7 @@ const App = (props) => {
           <Routes>
             <Route path="/profile" element={<Profile />} />
             <Route path="/messages/*" element={<Messages store={props.store} />} />
+            <Route path="/friends/*" element={<FriendsContainer store={props.store} />} />
           </Routes>
         </div>
       </div>

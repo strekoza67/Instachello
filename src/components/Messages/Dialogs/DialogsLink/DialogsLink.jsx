@@ -1,5 +1,4 @@
 import style from './DialogsLink.module.css';
-import miniphoto from '../../../../images/mini_profile_img.jpg';
 import { NavLink } from 'react-router-dom';
 
 const DialogsLink = (props) => {
