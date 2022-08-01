@@ -1,49 +1,74 @@
 import style from './Friends.module.css';
-import ekatOvch from '../../images/ekat-ovch.jpg';
-import yulia from '../../images/yulia.jpg';
-import alexey from '../../images/alexey.jpg';
+import userPhoto from '../../images/user-img.png';
+import axios from 'axios';
+import React from 'react';
 
-const Friends = (props) => {
+class Friends extends React.Component {
 
-  if (props.friends.length === 0) {
-    props.setUsers([
-      { id: 1, photo: yulia, followed: true, fullName: "Yulia Chuvashaeva", status: "I am director", location: { city: "Orenburg", country: "Russia" } },
-      { id: 2, photo: ekatOvch, followed: false, fullName: "Ekaterina Ovcharenko", status: "I am yung mother", location: { city: "Orenburg", country: "Russia" } },
-      { id: 3, photo: alexey, followed: true, fullName: "Alexey Ovcharenko", status: "I am Sadh Guru", location: { city: "Orenburg", country: "Russia" } }
-    ])
+  componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items);
+        // this.props.setTotalUsersCount(response.data.totalCount);
+      });
   }
 
-  return (
-    <div>
-      {
-        props.friends.map((f, i) => {
-          return <div key={i}>
-            <span>
-              <div>
-                <img className={style} src={f.photo} alt="miniphoto" />
-              </div>
-              <div>
-                {f.followed
-                  ? <button onClick={() => { props.unfollow(f.id) }}> Unfollow</button>
-                  : <button onClick={() => { props.follow(f.id) }}> Follow</button>}
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items)
+      });
+  }
 
-              </div>
-            </span>
-            <span>
+  render() {
+
+    let pagesCount = Math.ceil(this.props.totalFriendsCount / this.props.pageSize) ;
+
+    let pages = [];
+    for (let i=1; i <= pagesCount;i++) {
+      pages.push(i);
+    }
+
+    return (
+      <div>
+        <div>
+          {pages.map((p, i) => {
+            return <span onClick={() => {this.onPageChanged(p)}} 
+            key={i} 
+            className={this.props.currentPage === p ? style.selectedPage : style.simplePage}>{p}</span>
+          })}
+        </div>
+        {
+          this.props.friends.map((f, i) => {
+            return <div key={i}>
               <span>
-                <div>{f.fullName}</div>
-                <div>{f.status}</div>
+                <div>
+                  <img className={style} src={f.photos.small != null ? f.photos.small : userPhoto} alt="miniphoto" />
+                </div>
+                <div>
+                  {f.followed
+                    ? <button onClick={() => { this.props.unfollow(f.id) }}> Unfollow</button>
+                    : <button onClick={() => { this.props.follow(f.id) }}> Follow</button>}
+
+                </div>
               </span>
               <span>
-                <div>{f.location.country}</div>
-                <div>{f.location.city}</div>
+                <span>
+                  <div>{f.name}</div>
+                  <div>{f.status}</div>
+                </span>
+                <span>
+                  <div>{"f.location.country"}</div>
+                  <div>{"f.location.city"}</div>
+                </span>
               </span>
-            </span>
-          </div>
-        })
-      }
-    </div>
-  )
+            </div>
+          })
+        }
+      </div>
+    )
+  }
 }
 
 export default Friends;
