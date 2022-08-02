@@ -1,9 +1,7 @@
 import style from './ProfileInfo.module.css';
-import simplephoto from '../../../images/profile_img.jpg';
 import Preloader from '../../common/Preloader/Preloader';
 
 const ProfileInfo = (props) => {
-
   if(!props.profile) {
     return <Preloader/>
   }
@@ -14,9 +12,9 @@ const ProfileInfo = (props) => {
         <img src={props.profile.photos.large} alt="simplephoto" />
       </a>
       <div className={style.profile__content}>
-        <h1 className={style.name}>Serega Kozlov</h1>
-        <p className={style.descr}>Serega оч крутой парень, добряк, всех любит и всем помогает, и всё у него получается, ну прям вообще всё!</p>
-        <div className={style.hobbies}>Спорт, ИТ-сфера, приключения, сериалы, созерцание, Гарри Поттер</div>
+        <h1 className={style.name}>{props.profile.fullName}</h1>
+        <p className={style.descr}>{props.profile.aboutMe}</p>
+        <div className={style.hobbies}></div>
         <div className={style.btns}>
           <button type='submit' className={style.add__btn}>Add Friend</button>
           <button type='submit' className={style.send__btn}>Send Message</button>

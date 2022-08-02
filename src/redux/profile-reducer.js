@@ -36,11 +36,11 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreator = () => {
+export const addPost = () => {
   return { type: ADD_POST }
 }
-export const uppdateNewPostTextActionCreator = (text) => {
-  return { type: UPPDATE_NEW_POST_TEXT, newText: text }
+export const uppdateNewPostText = (newText) => {
+  return { type: UPPDATE_NEW_POST_TEXT, newText }
 }
 export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile }

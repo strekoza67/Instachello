@@ -1,6 +1,5 @@
 .profile__info {
   display: flex;
-  justify-content: space-around;
 }
 
 .profile__info img {
@@ -12,6 +11,7 @@
 
 .profile__content {
   max-width: 670px;
+  margin-left: 50px;
 }
 
 .name {

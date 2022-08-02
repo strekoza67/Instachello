@@ -7,7 +7,7 @@ const Header = () => {
     <header className={style.header}>
       <div className={style.header__left}>
         <a href="#">
-          <img className={`${style.header} ${style.img}`} src={logo} alt="logo" />
+          <img src={logo} alt="logo" />
         </a>
         <button className={style.theme__btn}></button>
       </div>

@@ -1,11 +1,10 @@
-import style from './MyPosts.module.css';
+import style from './Posts.module.css';
 import Post from './Post/Post';
 import { React } from 'react';
 
-const MyPosts = (props) => {
-
+const Posts = (props) => {
   let postsElements = props.posts.map((post, i) => {
-    return <Post key={i} message={post.message} />
+    return <Post key={i} message={post.message} profile={props.profile}/>
   });
 
   let onAddPost = () => {
@@ -29,4 +28,4 @@ const MyPosts = (props) => {
   )
 }
 
-export default MyPosts;
+export default Posts;

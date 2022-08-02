@@ -3,7 +3,6 @@ import userPhoto from '../../images/user-img.png';
 import { NavLink } from 'react-router-dom';
 
 let Friends = (props) => {
-
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
 
   let pages = [];

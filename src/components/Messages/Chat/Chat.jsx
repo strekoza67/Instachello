@@ -2,7 +2,6 @@ import style from './Chat.module.css';
 import TextMessage from './TextMessage/TextMessage';
 
 const Chat = (props) => {
-
   let messagesElements = props.messages.map((message, i) => {
     return <TextMessage key={i} text={message.text} />
   });

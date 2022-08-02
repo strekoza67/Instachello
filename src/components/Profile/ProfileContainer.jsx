@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setUserProfile } from "../../redux/profile-reducer";
+import { setUserProfile, addPost, uppdateNewPostText } from "../../redux/profile-reducer";
 import React from 'react';
 import Profile from './Profile';
 import axios from 'axios';
@@ -15,7 +15,7 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <Profile {...this.props} profile={this.props.profile} />
+      <Profile {...this.props} />
     )
   }
 }
@@ -23,7 +23,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText,
   }
 }
 
-export default connect(mapStateToProps, {setUserProfile})(ProfileContainer);
+export default connect(mapStateToProps, { addPost, uppdateNewPostText, setUserProfile })(ProfileContainer);
