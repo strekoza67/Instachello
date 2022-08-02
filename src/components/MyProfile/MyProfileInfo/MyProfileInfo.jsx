@@ -1,8 +1,8 @@
-import style from './ProfileInfo.module.css';
+import style from './MyProfileInfo.module.css';
 import simplephoto from '../../../images/profile_img.jpg';
 import Preloader from '../../common/Preloader/Preloader';
 
-const ProfileInfo = (props) => {
+const MyProfileInfo = (props) => {
 
   if(!props.profile) {
     return <Preloader/>
@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
   return (
     <div className={style.profile__info}>
       <a href="#">
-        <img src={props.profile.photos.large} alt="simplephoto" />
+        <img src={simplephoto} alt="simplephoto" />
       </a>
       <div className={style.profile__content}>
         <h1 className={style.name}>Serega Kozlov</h1>
@@ -27,4 +27,4 @@ const ProfileInfo = (props) => {
   )
 }
 
-export default ProfileInfo;
+export default MyProfileInfo;

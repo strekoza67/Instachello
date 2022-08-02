@@ -5,6 +5,7 @@ import Messages from './components/Messages/Messages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FriendsContainer from './components/Friends/FriendsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import MyProfileContainer from './components/MyProfile/MyProfileContainer';
 
 
 const App = (props) => {
@@ -15,7 +16,7 @@ const App = (props) => {
         <Sidebar className="sidebar" />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path="/myprofile/*" element={<ProfileContainer />} />
+            <Route path="/myprofile/*" element={<MyProfileContainer/>} />
             <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<Messages store={props.store} />} />
             <Route path="/friends/*" element={<FriendsContainer store={props.store} />} />

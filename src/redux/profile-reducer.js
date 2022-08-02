@@ -4,8 +4,8 @@ const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   posts: [
-    { id: "Yulia_Chuvashaeva", message: "Hello bro!" },
-    { id: "Pushok_Lapushok", message: "Serega my best friend, I love him!" },
+    { id: 1, message: "Hello bro!" },
+    { id: 2, message: "Serega my best friend, I love him!" },
   ],
   newPostText: '',
   profile: null,
