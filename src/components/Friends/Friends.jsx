@@ -1,12 +1,13 @@
 import style from './Friends.module.css';
 import userPhoto from '../../images/user-img.png';
+import { NavLink } from 'react-router-dom';
 
 let Friends = (props) => {
-  
+
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
 
   let pages = [];
-  for (let i=1; i <= pagesCount;i++) {
+  for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
 
@@ -24,7 +25,9 @@ let Friends = (props) => {
           return <div key={i}>
             <span>
               <div>
-                <img className={style.userPhoto} src={f.photos.small != null ? f.photos.small : userPhoto} alt="miniphoto" />
+                <NavLink to={'/profile/' + f.id}>
+                  <img className={style.userPhoto} src={f.photos.small != null ? f.photos.small : userPhoto} alt="miniphoto" />
+                </NavLink>
               </div>
               <div>
                 {f.followed

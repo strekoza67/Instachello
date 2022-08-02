@@ -1,0 +1,31 @@
+.myPosts__form {
+  display: flex;
+  width: 500px;
+  margin-top: 40px;
+  max-height: 36px;
+}
+
+.myPosts textarea {
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: 1px solid #c2c5ce;
+  border-radius: 4px;
+  margin-right: 5px;
+  padding: 6px;
+  color: #c2c5ce;
+}
+
+
+.myPosts__btn {
+  width: 100px;
+  height: 36px;
+  border: none;
+  color: #fff;
+  background-color: #e7307c;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
 import Messages from './components/Messages/Messages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FriendsContainer from './components/Friends/FriendsContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 const App = (props) => {
@@ -15,7 +15,8 @@ const App = (props) => {
         <Sidebar className="sidebar" />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/myprofile/*" element={<ProfileContainer />} />
+            <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/messages/*" element={<Messages store={props.store} />} />
             <Route path="/friends/*" element={<FriendsContainer store={props.store} />} />
           </Routes>

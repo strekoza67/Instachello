@@ -8,7 +8,7 @@ const Sidebar = () => {
       <img src={miniphoto} alt="miniphoto" />
       <nav>
         <ul className={style.menu}>
-          <li className={style.menu__item}><NavLink to='/profile' className={navData => navData.isActive ? style.active : style.menu__item}>My Profile</NavLink></li>
+          <li className={style.menu__item}><NavLink to='/myprofile' className={navData => navData.isActive ? style.active : style.menu__item}>My Profile</NavLink></li>
           <li className={style.menu__item}><NavLink to='/messages' className={navData => navData.isActive ? style.active : style.menu__item}>Messages</NavLink></li>
           <li className={style.menu__item}><NavLink to='/friends' className={navData => navData.isActive ? style.active : style.menu__item}>Friends</NavLink></li>
           <li className={style.menu__item}><NavLink to='/feed' className={navData => navData.isActive ? style.active : style.menu__item}>Feed</NavLink></li>
