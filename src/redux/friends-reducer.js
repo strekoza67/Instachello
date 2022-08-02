@@ -49,25 +49,25 @@ const friendsReducer = (state = initialState, action) => {
   }
 }
 
-export const followAC = (friendId) => {
+export const follow = (friendId) => {
   return { type: FOLLOW, friendId };
 };
 
-export const unfollowAC = (friendId) => {
+export const unfollow = (friendId) => {
   return { type: UNFOLLOW, friendId };
 };
 
-export const setFriendsAC = (friends) => {
+export const setFriends = (friends) => {
   return { type: SET_FRIENDS, friends };
 }
 
-export const setCurrentPageAC = (currentPage) => {
+export const setCurrentPage = (currentPage) => {
   return { type: SET_CURRENT_PAGE, currentPage };
 }
-export const setTotalUsersCountAC = (totalCount) => {
+export const setTotalUsersCount = (totalCount) => {
   return { type: SET_TOTAL_USERS_COUNT, totalCount };
 }
-export const toggleIsFetchingAC = (isFetching) => {
+export const toggleIsFetching = (isFetching) => {
   return {type: TOGGLE_IS_FETCHING, isFetching}
 }
 
