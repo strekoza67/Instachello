@@ -33,7 +33,7 @@ let Friends = (props) => {
                 {f.followed
                   ? <button onClick={() => {
 
-                    unfollowAPI.followUser(f.id)
+                    unfollowAPI.unfollowUser(f.id)
                       .then(response => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(f.id);
