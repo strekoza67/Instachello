@@ -35,7 +35,7 @@
   outline: none;
 }
 
-.right__btns {
+.loginBlock {
   display: flex;
 }
 
@@ -49,4 +49,5 @@
   border: none;
   background-color: #e7307c;
   margin-right: 15px;
+  cursor: pointer;
 }
