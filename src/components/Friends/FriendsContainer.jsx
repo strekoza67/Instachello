@@ -1,31 +1,29 @@
 import { connect } from 'react-redux';
 import { follow, setCurrentPage, setFriends, setTotalUsersCount, toggleIsFetching, unfollow } from "../../redux/friends-reducer";
-import axios from 'axios';
 import React from 'react';
 import Friends from './Friends';
 import Preloader from '../common/Preloader/Preloader';
-import { getUsers } from '../../api/api';
+import { friendsAPI } from '../../api/api';
 
 class FriendsContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    getUsers().then(response => {
+    friendsAPI.getUsers(this.props.currentPage, this.props.pageSize)
+      .then(data => {
         this.props.toggleIsFetching(false);
-        this.props.setFriends(response.data.items);
-        // this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.setFriends(data.items);
+        // this.props.setTotalUsersCount(data.totalCount);
       });
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.toggleIsFetching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-      withCredentials: true,
-    })
-      .then(response => {
+    friendsAPI.getUsers(pageNumber, this.props.pageSize)
+      .then(data => {
         this.props.toggleIsFetching(false);
-        this.props.setFriends(response.data.items)
+        this.props.setFriends(data.items)
       });
   }
 
@@ -54,4 +52,4 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-   { follow, unfollow, setFriends, setCurrentPage, setTotalUsersCount, toggleIsFetching, })(FriendsContainer);
+  { follow, unfollow, setFriends, setCurrentPage, setTotalUsersCount, toggleIsFetching, })(FriendsContainer);
