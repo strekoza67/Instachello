@@ -31,24 +31,27 @@ let Friends = (props) => {
               </div>
               <div>
                 {f.followed
-                  ? <button onClick={() => {
-
+                  ? <button disabled={props.followingProgress.some(id => id === f.id)} onClick={() => {
+                    props.toggleFollowingProgress(true, f.id);
                     unfollowAPI.unfollowUser(f.id)
                       .then(response => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(f.id);
                         }
                       });
+                    props.toggleFollowingProgress(false, f.id);
+
 
                   }}> Unfollow</button>
-                  : <button onClick={() => {
-
+                  : <button disabled={props.followingProgress.some(id => id === f.id)} onClick={() => {
+                    props.toggleFollowingProgress(true, f.id);
                     followAPI.followUser(f.id)
                       .then(response => {
                         if (response.data.resultCode === 0) {
                           props.follow(f.id);
                         }
                       });
+                    props.toggleFollowingProgress(false, f.id);
 
                   }}> Follow</button>}
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setFriends, setTotalUsersCount, toggleIsFetching, unfollow } from "../../redux/friends-reducer";
+import { toggleFollowingProgress, follow, setCurrentPage, setFriends, setTotalUsersCount, toggleIsFetching, unfollow } from "../../redux/friends-reducer";
 import React from 'react';
 import Friends from './Friends';
 import Preloader from '../common/Preloader/Preloader';
@@ -36,7 +36,9 @@ class FriendsContainer extends React.Component {
         onPageChanged={this.onPageChanged}
         friends={this.props.friends}
         follow={this.props.follow}
-        unfollow={this.props.unfollow} />
+        unfollow={this.props.unfollow} 
+        toggleFollowingProgress={this.props.toggleFollowingProgress}
+        followingProgress={this.props.followingProgress} />
     </>
   }
 }
@@ -48,8 +50,9 @@ let mapStateToProps = (state) => {
     totalFriendsCount: state.friendsPage.totalFriendsCount,
     currentPage: state.friendsPage.currentPage,
     isFetching: state.friendsPage.isFetching,
+    followingProgress: state.friendsPage.followingProgress,
   }
 }
 
 export default connect(mapStateToProps,
-  { follow, unfollow, setFriends, setCurrentPage, setTotalUsersCount, toggleIsFetching, })(FriendsContainer);
+  { follow, unfollow, setFriends, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress })(FriendsContainer);
