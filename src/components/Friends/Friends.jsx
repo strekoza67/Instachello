@@ -1,7 +1,7 @@
 import style from './Friends.module.css';
 import userPhoto from '../../images/user-img.png';
 import { NavLink } from 'react-router-dom';
-import { followAPI, unfollowAPI } from '../../api/api';
+import { friendsAPI } from '../../api/api';
 
 let Friends = (props) => {
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
@@ -32,26 +32,13 @@ let Friends = (props) => {
               <div>
                 {f.followed
                   ? <button disabled={props.followingProgress.some(id => id === f.id)} onClick={() => {
-                    props.toggleFollowingProgress(true, f.id);
-                    unfollowAPI.unfollowUser(f.id)
-                      .then(response => {
-                        if (response.data.resultCode === 0) {
-                          props.unfollow(f.id);
-                        }
-                      });
-                    props.toggleFollowingProgress(false, f.id);
 
+                    props.unfollow(f.id);
 
                   }}> Unfollow</button>
                   : <button disabled={props.followingProgress.some(id => id === f.id)} onClick={() => {
-                    props.toggleFollowingProgress(true, f.id);
-                    followAPI.followUser(f.id)
-                      .then(response => {
-                        if (response.data.resultCode === 0) {
-                          props.follow(f.id);
-                        }
-                      });
-                    props.toggleFollowingProgress(false, f.id);
+
+                    props.follow(f.id);
 
                   }}> Follow</button>}
 
