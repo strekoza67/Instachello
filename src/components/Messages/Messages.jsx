@@ -3,8 +3,10 @@ import Dialogs from './Dialogs/Dialogs';
 import style from './Messages.module.css';
 import Search from './Search/Search';
 import User from './User/User';
+import { Navigate } from 'react-router-dom';
 
 const Messages = (props) => {
+
   return (
     <div className={style.messages}>
       <div className={style.container}>

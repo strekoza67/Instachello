@@ -1,7 +1,6 @@
 import style from './Friends.module.css';
 import userPhoto from '../../images/user-img.png';
 import { NavLink } from 'react-router-dom';
-import { friendsAPI } from '../../api/api';
 
 let Friends = (props) => {
   let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);

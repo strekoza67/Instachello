@@ -2,15 +2,10 @@ import { connect } from 'react-redux';
 import { getUserProfile, addPost, uppdateNewPostText } from "../../redux/profile-reducer";
 import React from 'react';
 import Profile from './Profile';
-import { useParams } from 'react-router-dom';
-
-export function withRouter(Children){
-  return(props)=>{
-
-     const match  = {params: useParams()};
-     return <Children {...props}  match = {match}/>
- }
-}
+import { Navigate, useParams } from 'react-router-dom';
+import { withAuthRedirect } from '../hoc/WithAuthRedirect';
+import { compose } from 'redux';
+import { withRouter } from '../hoc/WithRouter';
 
 class ProfileContainer extends React.Component {
 
@@ -31,9 +26,12 @@ let mapStateToProps = (state) => {
     profile: state.profilePage.profile,
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText,
+    isAuth: state.auth.isAuth,
   }
 }
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, { addPost, uppdateNewPostText, getUserProfile })(withUrlDataContainerComponent);
+export default compose(
+  connect(mapStateToProps, { addPost, uppdateNewPostText, getUserProfile }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);
